@@ -16,9 +16,9 @@ namespace Domain.Test.Repositories
         {
             IList<Person> persons = new List<Person>()
             {
-                new Person("Person A", "person.a@email.com", true),
-                new Person("Person B", "person.b@email.com", true),
-                new Person("Person C", "person.c@email.com", true),
+                new Person("Person A", "person.a@email.com"),
+                new Person("Person B", "person.b@email.com"),
+                new Person("Person C", "person.c@email.com"),
             };
 
             for (int i = 1; i <= persons.Count(); i++)
@@ -60,8 +60,8 @@ namespace Domain.Test.Repositories
                     person =>
                     {
                         Person result = persons.Where(p => p.Id == person.Id).SingleOrDefault();
-                        result.IsActive = person.IsActive;
-                        result.UpdatedOn = person.UpdatedOn;
+                        result.SetIsActive(person.IsActive);
+                        result.SetUpdateOn(person.UpdatedOn);
                     });
 
             _repository = mockRepository.Object;
@@ -76,7 +76,7 @@ namespace Domain.Test.Repositories
         [Fact]
         public void CanAddPerson()
         {
-            Person person = new Person("Person D", "person.d@email.com", true);
+            Person person = new Person("Person D", "person.d@email.com");
 
             int countExpected = _repository.GetAll().Count() + 1;
 
@@ -100,6 +100,7 @@ namespace Domain.Test.Repositories
         {
             int id = 3;
             Person person = _repository.SearchById(id);
+
             Assert.Equal(id, person.Id);
 
             int countExpected = _repository.GetAll().Count() - 1;
@@ -123,8 +124,8 @@ namespace Domain.Test.Repositories
 
             Assert.Equal(id, personUpdated.Id);
 
-            personUpdated.UpdatedOn = updateOnExpected;
-            personUpdated.IsActive = isActiveExpeceted;
+            personUpdated.SetUpdateOn(updateOnExpected);
+            personUpdated.SetIsActive(isActiveExpeceted);
 
             _repository.Update(personUpdated);
 

@@ -3,7 +3,6 @@ using Domain.Repositories;
 using Infrastructure.Contexts;
 using Infrastructure.Repositories;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Client
@@ -13,9 +12,8 @@ namespace Client
         static void Main(string[] args)
         {            
             Person entity = new Person(
-                "Person Name",
-                "personemail@email.com",               
-                true);
+                "Person",
+                "person@email.com");
 
             GenericContext<Person> genericContext = new GenericContext<Person>();
             
@@ -27,7 +25,7 @@ namespace Client
 
             foreach (var person in persons)
             {
-                Console.WriteLine($"Name: {person.Name} Email:{person.Email}");
+                Console.WriteLine($"Id: {person.Id}\t Name: {person.Name}\t Email:{person.Email}");
             }
 
             Console.ReadKey();
