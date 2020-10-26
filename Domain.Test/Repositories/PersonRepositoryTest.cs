@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Queries;
 using Domain.Repositories;
 using Moq;
 using System;
@@ -34,7 +35,11 @@ namespace Domain.Test.Repositories
 
             mockRepository
                 .Setup(repository => repository.SearchById(It.IsAny<long>()))
-                .Returns((long id) => persons.Where(person => person.Id == id).Single());
+                .Returns((long id) => 
+                    persons.AsQueryable()
+                           .Where(EntityQuery<Person>.GetById(id))
+                           .SingleOrDefault());
+                
 
             mockRepository
                 .Setup(repository => repository.Add(It.IsAny<Person>()))
@@ -50,7 +55,9 @@ namespace Domain.Test.Repositories
                 .Callback<Person>(
                     person =>
                     {
-                        Person result = persons.Where(p => p.Equals(person)).SingleOrDefault();
+                        Person result = persons.AsQueryable()
+                                               .Where(EntityQuery<Person>.GetById(person.Id))
+                                               .SingleOrDefault();
                         persons.Remove(result);
                     });
 
@@ -59,7 +66,10 @@ namespace Domain.Test.Repositories
                 .Callback<Person>(
                     person =>
                     {
-                        Person result = persons.Where(p => p.Id == person.Id).SingleOrDefault();
+                        Person result = persons.AsQueryable()
+                                               .Where(EntityQuery<Person>.GetById(person.Id))
+                                               .SingleOrDefault();
+
                         result.SetIsActive(person.IsActive);
                         result.SetUpdateOn(person.UpdatedOn);
                     });

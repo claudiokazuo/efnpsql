@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Queries;
 using Domain.Repositories;
 using Infrastructure.Contexts;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace Infrastructure.Repositories
         {
             return _context
                 .Entities
-                .Where(entity => entity.Id == id)
+                .Where(EntityQuery<T>.GetById(id))
                 .SingleOrDefault();
         }
 
