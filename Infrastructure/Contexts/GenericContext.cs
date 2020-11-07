@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infrastructure.Maps;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -16,7 +17,7 @@ namespace Infrastructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new PersonMap());            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

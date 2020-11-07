@@ -12,8 +12,8 @@ namespace Client
         static void Main(string[] args)
         {            
             Person entity = new Person(
-                "Person",
-                "person@email.com");
+                Guid.NewGuid().ToString("n").Substring(0, 8),
+                $"{Guid.NewGuid().ToString("n").Substring(0, 16)}@email.com");
 
             GenericContext<Person> genericContext = new GenericContext<Person>();
             

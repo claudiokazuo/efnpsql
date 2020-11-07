@@ -1,19 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
     public abstract class Entity
     {
-        [Key]
-        [Column("id")]
-        public long Id { get; set; }
-        [Column("createdon")]
-        public DateTime CreatedOn { get; protected set; }
-        [Column("updatedon")]
-        public DateTime UpdatedOn { get; protected set; }
-        [Column("isactive")]
+        public long Id { get; set; }     
+        public DateTime CreatedOn { get; protected set; }        
+        public DateTime UpdatedOn { get; protected set; }        
         public bool IsActive { get; protected set; }
 
         public Entity()
