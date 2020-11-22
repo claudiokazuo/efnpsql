@@ -4,9 +4,6 @@ using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Handlers
 {
@@ -25,7 +22,7 @@ namespace Application.Handlers
 
             return new GenericResponseCommand(
                 true,
-                $"{entity.Name} cadastrado", 
+                $"{entity.Name} cadastrado",
                 entity.Id);
         }
     }

@@ -31,7 +31,7 @@ namespace Domain.Test.Queries
         [Fact]
         public void CanFindById()
         {
-            int idExpected = 2;            
+            int idExpected = 2;
             Person person = _persons.AsQueryable().Where(EntityQuery<Person>.GetById(idExpected)).SingleOrDefault();
             Assert.Equal(idExpected, person.Id);
         }

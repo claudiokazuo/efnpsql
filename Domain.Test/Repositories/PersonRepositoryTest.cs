@@ -35,11 +35,11 @@ namespace Domain.Test.Repositories
 
             mockRepository
                 .Setup(repository => repository.SearchById(It.IsAny<long>()))
-                .Returns((long id) => 
+                .Returns((long id) =>
                     persons.AsQueryable()
                            .Where(EntityQuery<Person>.GetById(id))
                            .SingleOrDefault());
-                
+
 
             mockRepository
                 .Setup(repository => repository.Add(It.IsAny<Person>()))

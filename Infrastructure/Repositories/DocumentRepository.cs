@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories
         {
             return _context
                 .Entities
-                .Include(p => p.DocumentType)                
+                .Include(p => p.DocumentType)
                 .ToList<T>();
         }
 
@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
         {
             return _context
                 .Entities
-                .Include(p => p.DocumentType)                
+                .Include(p => p.DocumentType)
                 .Where(EntityQuery<T>.GetById(id))
                 .SingleOrDefault<T>();
         }

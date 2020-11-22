@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime;
-using System.Text;
-
-namespace Domain.Commands
+﻿namespace Domain.Commands
 {
     public interface ICommandResponse
     {

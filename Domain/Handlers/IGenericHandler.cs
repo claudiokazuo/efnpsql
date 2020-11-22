@@ -2,8 +2,8 @@
 
 namespace Domain.Handlers
 {
-    public interface IGenericHandler<T> where T: ICommandInput
+    public interface IGenericHandler<T> where T : ICommandInput
     {
-       ICommandResponse Handle(T command);
+        ICommandResponse Handle(T command);
     }
 }

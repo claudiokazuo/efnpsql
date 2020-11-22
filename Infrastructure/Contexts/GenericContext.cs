@@ -7,11 +7,11 @@ using System;
 namespace Infrastructure.Contexts
 {
     public class GenericContext<T> : DbContext where T : Entity
-    {        
+    {
         public virtual DbSet<T> Entities { get; set; }
 
         public GenericContext()
-        {        
+        {
             //Database.EnsureCreated();
         }
 
@@ -20,7 +20,7 @@ namespace Infrastructure.Contexts
             modelBuilder.ApplyConfiguration(new DocumenTypeMap());
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new DocumentMap());
-            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,7 +34,7 @@ namespace Infrastructure.Contexts
                 .UseNpgsql(configuration
                 .GetConnectionString("DefaultConnection"));
 
-            base.OnConfiguring(optionsBuilder); 
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

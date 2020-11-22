@@ -4,9 +4,9 @@ namespace Domain.Entities
 {
     public abstract class Entity
     {
-        public long Id { get; set; }     
-        public DateTime CreatedOn { get; protected set; }        
-        public DateTime UpdatedOn { get; protected set; }        
+        public long Id { get; set; }
+        public DateTime CreatedOn { get; protected set; }
+        public DateTime UpdatedOn { get; protected set; }
         public bool IsActive { get; protected set; }
 
         public Entity()

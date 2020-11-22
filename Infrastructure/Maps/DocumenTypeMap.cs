@@ -2,9 +2,6 @@
 using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Maps
 {
@@ -14,16 +11,16 @@ namespace Infrastructure.Maps
         public override void Configure(EntityTypeBuilder<DocumentType> builder)
         {
             builder.
-                ToTable("tb_documenttype");            
+                ToTable("tb_documenttype");
 
             builder
                 .Property(builder => builder.Name)
                 .HasColumnName("tx_name");
 
             builder
-                .HasMany(x => x.Documents)                
+                .HasMany(x => x.Documents)
                 .WithOne(x => x.DocumentType)
-                .HasForeignKey(x => x.DocumentTypeId);    
+                .HasForeignKey(x => x.DocumentTypeId);
 
             base.Configure(builder);
         }

@@ -19,9 +19,9 @@ namespace Application.Handlers
         public ICommandResponse Handle(PersonCommand command)
         {
             Person entity = new Person(command.Name, command.Email);
-            
+
             _repository.Add(entity);
-            
+
             return new GenericResponseCommand(true,
                 $"{entity.Name} cadastrado",
                 entity.Id);

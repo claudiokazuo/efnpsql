@@ -26,12 +26,12 @@ namespace Infrastructure.Maps
             builder
                 .HasOne(x => x.Person)
                 .WithMany(x => x.Documents)
-                .HasForeignKey(x => x.PersonId);                
+                .HasForeignKey(x => x.PersonId);
 
             builder
                 .HasOne(x => x.DocumentType)
                 .WithMany(x => x.Documents)
-                .HasForeignKey(x => x.DocumentTypeId);                
+                .HasForeignKey(x => x.DocumentTypeId);
 
             base.Configure(builder);
         }

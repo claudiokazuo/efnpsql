@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations
 {
-    public abstract class EntityConfiguration<T> : IEntityTypeConfiguration<T> where T: Entity
+    public abstract class EntityConfiguration<T> : IEntityTypeConfiguration<T> where T : Entity
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
@@ -26,6 +26,6 @@ namespace Infrastructure.Configurations
             builder
                 .Property(builder => builder.IsActive)
                 .HasColumnName("bl_active");
-        }        
+        }
     }
 }

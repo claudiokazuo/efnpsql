@@ -26,7 +26,7 @@ namespace Infrastructure.Maps
                 .HasForeignKey(x => x.PersonId);
 
             base.Configure(builder);
-           
+
         }
     }
 }

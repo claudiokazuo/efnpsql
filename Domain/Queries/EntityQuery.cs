@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 
 namespace Domain.Queries
 {
-    public static class EntityQuery<T> where T: Entity
-    {        
+    public static class EntityQuery<T> where T : Entity
+    {
         public static Expression<Func<T, bool>> GetById(long id)
         {
             return entity => entity.Id == id;
@@ -23,7 +23,7 @@ namespace Domain.Queries
                 entity.CreatedOn.Month == createdOn.Month &&
                 entity.CreatedOn.Day == createdOn.Day;
         }
-        
+
         public static Expression<Func<T, bool>> GetByUpdateOn(DateTime updateOn)
         {
             return entity =>

@@ -26,13 +26,13 @@ namespace Api.Controllers
         {
             return _repository.GetAll();
         }
-        
+
         [HttpGet("{id}")]
         public DocumentType Get(long id)
         {
             return _repository.SearchById(id);
         }
-        
+
         [HttpPost]
         public ICommandResponse Post([FromBody] Application.Commands.Create.DocumentTypeCommand command)
         {
