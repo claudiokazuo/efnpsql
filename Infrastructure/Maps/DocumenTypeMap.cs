@@ -2,26 +2,30 @@
 using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Infrastructure.Maps
 {
-    public class PersonMap : EntityConfiguration<Person>
+    public class DocumenTypeMap : EntityConfiguration<DocumentType>
     {
-        public override void Configure(EntityTypeBuilder<Person> builder)
+
+        public override void Configure(EntityTypeBuilder<DocumentType> builder)
         {
             builder.
-                ToTable("tb_person");
+                ToTable("tb_documenttype");            
 
             builder
                 .Property(builder => builder.Name)
                 .HasColumnName("tx_name");
 
             builder
-                .Property(builder => builder.Email)
-                .HasColumnName("tx_email");
+                .HasOne(x => x.Document)
+                .WithMany()
+                .HasForeignKey(x => x.Id);    
 
             base.Configure(builder);
-           
         }
     }
 }

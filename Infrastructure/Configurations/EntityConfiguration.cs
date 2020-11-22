@@ -17,15 +17,15 @@ namespace Infrastructure.Configurations
 
             builder
                 .Property(builder => builder.CreatedOn)
-                .HasColumnName("createdon");
+                .HasColumnName("dt_createdon");
 
             builder
                 .Property(builder => builder.UpdatedOn)
-                .HasColumnName("updatedon");
+                .HasColumnName("dt_updatedon");
 
             builder
                 .Property(builder => builder.IsActive)
-                .HasColumnName("isactive");
+                .HasColumnName("bl_active");
         }        
     }
 }

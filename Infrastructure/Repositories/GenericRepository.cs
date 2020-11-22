@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Infrastructure.Repositories
 {
-    public class GenericRepository<T> : IRepository<T> where T : Entity
+    public class GenericRepository<T> : IGenericRepository<T> where T : Entity
     {
-        private GenericContext<T> _context;
+        protected GenericContext<T> _context;
 
         public GenericRepository(GenericContext<T> context)
         {
@@ -22,7 +22,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public IList<T> GetAll()
+        public virtual IList<T> GetAll()
         {
             return _context.Entities.ToList();
         }
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public T SearchById(long id)
+        public virtual T SearchById(long id)
         {
             return _context
                 .Entities
@@ -45,7 +45,6 @@ namespace Infrastructure.Repositories
         {
             _context.Update(entity);
             _context.SaveChanges();
-
         }
     }
 }

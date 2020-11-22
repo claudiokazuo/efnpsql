@@ -11,7 +11,7 @@ namespace Domain.Test.Repositories
 {
     public class PersonRepositoryTest
     {
-        private IRepository<Person> _repository;
+        private IGenericRepository<Person> _repository;
 
         public PersonRepositoryTest()
         {
@@ -27,7 +27,7 @@ namespace Domain.Test.Repositories
                 persons[i - 1].Id = i;
             }
 
-            Mock<IRepository<Person>> mockRepository = new Mock<IRepository<Person>>();
+            Mock<IGenericRepository<Person>> mockRepository = new Mock<IGenericRepository<Person>>();
 
             mockRepository
                .Setup(repository => repository.GetAll())

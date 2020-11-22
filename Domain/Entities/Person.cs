@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace Domain.Entities
 {
     public class Person : Entity
     {
@@ -10,5 +12,7 @@
         
         public string Name { get; private set; }
         public string Email { get; private set; }
+
+        public virtual IEnumerable<Document> Documents { get; set; }
     }
 }

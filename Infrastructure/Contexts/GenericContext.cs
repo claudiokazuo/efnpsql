@@ -17,7 +17,9 @@ namespace Infrastructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new PersonMap());            
+            modelBuilder.ApplyConfiguration(new PersonMap());
+            modelBuilder.ApplyConfiguration(new DocumentMap());
+            modelBuilder.ApplyConfiguration(new DocumenTypeMap());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

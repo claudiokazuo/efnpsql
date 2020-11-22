@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Repositories
 {
-    public interface IRepository<T> where T : Entity
+    public interface IGenericRepository<T> where T : Entity
     {
         IList<T> GetAll();
         T SearchById(long id);
