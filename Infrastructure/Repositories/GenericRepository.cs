@@ -11,9 +11,9 @@ namespace Infrastructure.Repositories
     {
         protected GenericContext<T> _context;
 
-        public GenericRepository(GenericContext<T> context)
+        public GenericRepository()
         {
-            _context = context;
+            _context = new GenericContext<T>();
         }
 
         public void Add(T entity)

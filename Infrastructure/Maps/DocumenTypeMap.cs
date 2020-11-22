@@ -21,9 +21,9 @@ namespace Infrastructure.Maps
                 .HasColumnName("tx_name");
 
             builder
-                .HasOne(x => x.Document)
-                .WithMany()
-                .HasForeignKey(x => x.Id);    
+                .HasMany(x => x.Documents)                
+                .WithOne(x => x.DocumentType)
+                .HasForeignKey(x => x.DocumentTypeId);    
 
             base.Configure(builder);
         }

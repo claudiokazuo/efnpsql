@@ -25,15 +25,13 @@ namespace Infrastructure.Maps
 
             builder
                 .HasOne(x => x.Person)
-                .WithMany()
-                .HasForeignKey(x => x.Id)
-                .HasConstraintName("fk_document_id_person");
+                .WithMany(x => x.Documents)
+                .HasForeignKey(x => x.PersonId);                
 
             builder
-                .HasOne(x => x.DocumentType)  
-                .WithMany()
-                .HasForeignKey(x => x.DocumentTypeId)
-                .HasConstraintName("fk_document_id_documenttype");
+                .HasOne(x => x.DocumentType)
+                .WithMany(x => x.Documents)
+                .HasForeignKey(x => x.DocumentTypeId);                
 
             base.Configure(builder);
         }

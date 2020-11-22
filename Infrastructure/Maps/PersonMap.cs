@@ -20,6 +20,11 @@ namespace Infrastructure.Maps
                 .Property(builder => builder.Email)
                 .HasColumnName("tx_email");
 
+            builder
+                .HasMany(x => x.Documents)
+                .WithOne(x => x.Person)
+                .HasForeignKey(x => x.PersonId);
+
             base.Configure(builder);
            
         }

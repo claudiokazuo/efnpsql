@@ -1,9 +1,15 @@
-﻿namespace Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace Domain.Entities
 {
     public class DocumentType : Entity
     {
-        public string Name { get; private set; }
+        public DocumentType(string name)
+        {
+            Name = name;
+        }
 
-        public virtual Document Document { get; private set; }
+        public string Name { get; private set; }
+        public virtual IList<Document> Documents { get; private set; }
     }
 }
