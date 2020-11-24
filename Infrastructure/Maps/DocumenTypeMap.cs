@@ -17,11 +17,6 @@ namespace Infrastructure.Maps
                 .Property(builder => builder.Name)
                 .HasColumnName("tx_name");
 
-            builder
-                .HasMany(x => x.Documents)
-                .WithOne(x => x.DocumentType)
-                .HasForeignKey(x => x.DocumentTypeId);
-
             base.Configure(builder);
         }
     }

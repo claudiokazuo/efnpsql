@@ -17,6 +17,7 @@ namespace Infrastructure.Repositories
             return _context
                 .Entities
                 .Include(p => p.DocumentType)
+                .Where(p => p.DocumentTypeId == p.DocumentType.Id)
                 .ToList<T>();
         }
 
@@ -25,7 +26,7 @@ namespace Infrastructure.Repositories
             return _context
                 .Entities
                 .Include(p => p.DocumentType)
-                .Where(EntityQuery<T>.GetById(id))
+                .Where(p => p.DocumentTypeId == p.DocumentType.Id &&  p.Id == id)
                 .SingleOrDefault<T>();
         }
     }

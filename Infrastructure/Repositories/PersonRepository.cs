@@ -3,6 +3,7 @@ using Domain.Queries;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Infrastructure.Repositories
 {
@@ -17,7 +18,7 @@ namespace Infrastructure.Repositories
             return _context
                 .Entities
                 .Include(p => p.Documents)
-                .ThenInclude(p => p.DocumentType)
+                .ThenInclude(p => p.DocumentType)                
                 .ToList<T>();
         }
 

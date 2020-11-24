@@ -8,8 +8,6 @@ namespace Domain.Entities
         {
             Name = name;
         }
-
-        public string Name { get; private set; }
-        public virtual IList<Document> Documents { get; private set; }
+        public string Name { get; private set; }        
     }
 }

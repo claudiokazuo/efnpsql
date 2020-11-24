@@ -23,7 +23,7 @@ namespace Infrastructure.Maps
             builder
                 .HasMany(x => x.Documents)
                 .WithOne(x => x.Person)
-                .HasForeignKey(x => x.PersonId);
+                .HasForeignKey(x => x.PersonId);                
 
             base.Configure(builder);
 
