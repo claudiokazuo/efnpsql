@@ -23,11 +23,6 @@ namespace Infrastructure.Maps
                 .Property(builder => builder.Number)
                 .HasColumnName("tx_number");
 
-            builder
-                .HasOne(x => x.Person)
-                .WithMany(x => x.Documents)
-                .HasForeignKey(x => x.PersonId);
-
             base.Configure(builder);
         }
     }
