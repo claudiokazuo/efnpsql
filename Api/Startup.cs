@@ -13,6 +13,8 @@ namespace Api
 {
     public class Startup
     {
+        private readonly string _policyName = "PolicyAllowAll";
+        private readonly string _healthPath = "/health";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,6 +24,18 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(
+                policy => policy.AddPolicy(_policyName,
+                builder =>
+                {
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                }));
+
+            services.AddHealthChecks();
+
             services.AddSwaggerGen();
 
             services.AddTransient(typeof(IGenericRepository<Person>),
@@ -47,6 +61,8 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(_policyName);
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -65,6 +81,8 @@ namespace Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHealthChecks(_healthPath);
         }
     }
 }
