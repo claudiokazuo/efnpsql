@@ -1,31 +1,29 @@
 ﻿using Domain.Entities;
 using Domain.Queries;
+using Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Infrastructure.Repositories
 {
     public class PersonRepository<T> : GenericRepository<T> where T : Person
     {
-        public PersonRepository()
+        public PersonRepository(GenericContext context) : base(context)
         {
         }
 
-        public override IList<T> GetAll()
+        public override IEnumerable<T> GetAll()
         {
-            return _context
-                .Entities
+            return _entities
                 .Include(p => p.Documents)
                 .ThenInclude(p => p.DocumentType)                
-                .ToList<T>();
+                .AsEnumerable<T>();
         }
 
         public override T SearchById(long id)
         {
-            return _context
-                .Entities
+            return _entities
                 .Include(p => p.Documents)
                 .ThenInclude(p => p.DocumentType)
                 .Where(EntityQuery<T>.GetById(id))

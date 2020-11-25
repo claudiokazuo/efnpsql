@@ -79,7 +79,7 @@ namespace Domain.Test.Repositories
         [Fact]
         public void CanReturnPersonsList()
         {
-            IList<Person> persons = _repository.GetAll();
+            IEnumerable<Person> persons = _repository.GetAll();
             Assert.NotNull(persons);
         }
 

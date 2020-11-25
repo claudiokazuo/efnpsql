@@ -5,7 +5,7 @@ namespace Domain.Repositories
 {
     public interface IGenericRepository<T> where T : Entity
     {
-        IList<T> GetAll();
+        IEnumerable<T> GetAll();
         T SearchById(long id);
         void Add(T entity);
         void Update(T entity);

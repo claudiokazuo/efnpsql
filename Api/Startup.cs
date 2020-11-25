@@ -2,6 +2,7 @@ using Application.Handlers;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
+using Infrastructure.Contexts;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,12 +39,11 @@ namespace Api
 
             services.AddSwaggerGen();
 
-            services.AddTransient(typeof(IGenericRepository<Person>),
-                typeof(PersonRepository<Person>));
-            services.AddTransient(typeof(IGenericRepository<Document>),
-                typeof(DocumentRepository<Document>));
-            services.AddTransient(typeof(IGenericRepository<DocumentType>),
-                typeof(GenericRepository<DocumentType>));
+            services.AddDbContext<GenericContext>();
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddTransient(typeof(IGenericRepository<Person>), typeof(PersonRepository<Person>));
+            services.AddTransient(typeof(IGenericRepository<Document>), typeof(DocumentRepository<Document>));
+            
 
             services.AddTransient<IGenericHandler<Application.Commands.Create.PersonCommand>, PersonHandler>();
             services.AddTransient<IGenericHandler<Application.Commands.Create.DocumentCommand>, DocumentHandler>();

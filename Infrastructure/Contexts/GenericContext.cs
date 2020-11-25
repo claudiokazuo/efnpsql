@@ -6,21 +6,18 @@ using System;
 
 namespace Infrastructure.Contexts
 {
-    public class GenericContext<T> : DbContext where T : Entity
+    public class GenericContext : DbContext
     {
-        public virtual DbSet<T> Entities { get; set; }
-
-        public GenericContext()
+        public GenericContext(DbContextOptions<GenericContext> options) : base(options)
         {
-            //Database.EnsureCreated();
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DocumenTypeMap());
             modelBuilder.ApplyConfiguration(new PersonMap());
+            modelBuilder.ApplyConfiguration(new DocumenTypeMap());            
             modelBuilder.ApplyConfiguration(new DocumentMap());
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
