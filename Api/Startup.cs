@@ -49,9 +49,7 @@ namespace Api
             services.AddTransient<IGenericHandler<Application.Commands.Create.DocumentCommand>, DocumentHandler>();
             services.AddTransient<IGenericHandler<Application.Commands.Create.DocumentTypeCommand>, DocumentTypeHandler>();
 
-            services.AddControllers().AddNewtonsoftJson(options =>
-              options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
