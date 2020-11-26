@@ -1,4 +1,4 @@
-﻿using Application.Commands.Create;
+﻿using Application.Commands.Documment;
 using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
@@ -13,9 +13,9 @@ namespace Api.Controllers
     public class DocumentController : ControllerBase
     {
         private IGenericRepository<Document> _repository;
-        private IGenericHandler<Application.Commands.Create.DocumentCommand> _handler;
+        private IGenericHandler<DocumentCreateCommand> _handler;
 
-        public DocumentController(IGenericRepository<Document> repository, IGenericHandler<DocumentCommand> handler)
+        public DocumentController(IGenericRepository<Document> repository, IGenericHandler<DocumentCreateCommand> handler)
         {
             _repository = repository;
             _handler = handler;
@@ -34,7 +34,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public ICommandResponse Post([FromBody] Application.Commands.Create.DocumentCommand command)
+        public ICommandResponse Post([FromBody] DocumentCreateCommand command)
         {
             return _handler.Handle(command);
         }

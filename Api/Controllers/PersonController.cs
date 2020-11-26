@@ -1,4 +1,4 @@
-﻿using Application.Commands.Create;
+﻿using Application.Commands.Person;
 using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
@@ -13,12 +13,16 @@ namespace Api.Controllers
     public class PersonController : ControllerBase
     {
         private IGenericRepository<Person> _repository;
-        private IGenericHandler<Application.Commands.Create.PersonCommand> _handler;
+        private IGenericHandler<PersonCreateCommand> _handlerCreate;
+        private IGenericHandler<PersonUpdateCommand> _handlerUpdate;
 
-        public PersonController(IGenericRepository<Person> repository, IGenericHandler<PersonCommand> handler)
+        public PersonController(IGenericRepository<Person> repository,
+                                IGenericHandler<PersonCreateCommand> handlerCreate,
+                                IGenericHandler<PersonUpdateCommand> handlerUpdate)
         {
             _repository = repository;
-            _handler = handler;
+            _handlerCreate = handlerCreate;
+            _handlerUpdate = handlerUpdate;
         }
 
         [HttpGet]
@@ -34,9 +38,15 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public ICommandResponse Post([FromBody] Application.Commands.Create.PersonCommand command)
+        public ICommandResponse Post([FromBody] PersonCreateCommand command)
         {
-            return _handler.Handle(command);
+            return _handlerCreate.Handle(command);
+        }
+
+        [HttpPut]
+        public ICommandResponse Put([FromBody] PersonUpdateCommand command)
+        {
+            return _handlerUpdate.Handle(command);
         }
     }
 }

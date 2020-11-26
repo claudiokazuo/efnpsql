@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Delete\" />
-    <Folder Include="Commands\Update\" />
-    <Folder Include="Commands\Read\" />
+    <Compile Remove="Commands\Delete\**" />
+    <Compile Remove="Commands\Read\**" />
+    <EmbeddedResource Remove="Commands\Delete\**" />
+    <EmbeddedResource Remove="Commands\Read\**" />
+    <None Remove="Commands\Delete\**" />
+    <None Remove="Commands\Read\**" />
   </ItemGroup>
 
   <ItemGroup>

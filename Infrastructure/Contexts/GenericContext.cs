@@ -1,5 +1,4 @@
-﻿using Domain.Entities;
-using Infrastructure.Maps;
+﻿using Infrastructure.Maps;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -10,13 +9,13 @@ namespace Infrastructure.Contexts
     {
         public GenericContext(DbContextOptions<GenericContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PersonMap());
-            modelBuilder.ApplyConfiguration(new DocumenTypeMap());            
+            modelBuilder.ApplyConfiguration(new DocumenTypeMap());
             modelBuilder.ApplyConfiguration(new DocumentMap());
         }
 

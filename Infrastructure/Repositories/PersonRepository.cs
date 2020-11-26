@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories
         {
             return _entities
                 .Include(p => p.Documents)
-                .ThenInclude(p => p.DocumentType)                
+                .ThenInclude(p => p.DocumentType)
                 .AsEnumerable<T>();
         }
 

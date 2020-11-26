@@ -11,7 +11,7 @@
 
         public string Number { get; private set; }
         public long PersonId { get; set; }
-        public long DocumentTypeId { get; set; }        
+        public long DocumentTypeId { get; set; }
         public virtual DocumentType DocumentType { get; private set; }
     }
 }

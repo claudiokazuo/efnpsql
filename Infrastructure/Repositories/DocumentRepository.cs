@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories
         public override T SearchById(long id)
         {
             return _entities
-                .Include(p => p.DocumentType)                
+                .Include(p => p.DocumentType)
                 .SingleOrDefault<T>(EntityQuery<T>.GetById(id));
         }
     }

@@ -1,3 +1,6 @@
+using Application.Commands.DocumentType;
+using Application.Commands.Documment;
+using Application.Commands.Person;
 using Application.Handlers;
 using Domain.Entities;
 using Domain.Handlers;
@@ -43,11 +46,13 @@ namespace Api
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient(typeof(IGenericRepository<Person>), typeof(PersonRepository<Person>));
             services.AddTransient(typeof(IGenericRepository<Document>), typeof(DocumentRepository<Document>));
-            
 
-            services.AddTransient<IGenericHandler<Application.Commands.Create.PersonCommand>, PersonHandler>();
-            services.AddTransient<IGenericHandler<Application.Commands.Create.DocumentCommand>, DocumentHandler>();
-            services.AddTransient<IGenericHandler<Application.Commands.Create.DocumentTypeCommand>, DocumentTypeHandler>();
+
+            services.AddTransient<IGenericHandler<PersonCreateCommand>, PersonHandler>();
+            services.AddTransient<IGenericHandler<PersonUpdateCommand>, PersonHandler>();
+            services.AddTransient<IGenericHandler<DocumentCreateCommand>, DocumentHandler>();
+            services.AddTransient<IGenericHandler<DocumentTypeCreateCommand>, DocumentTypeHandler>();
+
 
             services.AddControllers();
         }

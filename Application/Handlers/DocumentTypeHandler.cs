@@ -1,4 +1,4 @@
-﻿using Application.Commands.Create;
+﻿using Application.Commands.DocumentType;
 using Application.Commands.Response;
 using Domain.Commands;
 using Domain.Entities;
@@ -7,14 +7,14 @@ using Domain.Repositories;
 
 namespace Application.Handlers
 {
-    public class DocumentTypeHandler : IGenericHandler<DocumentTypeCommand>
+    public class DocumentTypeHandler : IGenericHandler<DocumentTypeCreateCommand>                                
     {
         private IGenericRepository<DocumentType> _repository;
         public DocumentTypeHandler(IGenericRepository<DocumentType> repository)
         {
             _repository = repository;
         }
-        public ICommandResponse Handle(DocumentTypeCommand command)
+        public ICommandResponse Handle(DocumentTypeCreateCommand command)
         {
             DocumentType entity = new DocumentType(command.Name);
 

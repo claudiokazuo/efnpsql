@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class DocumentType : Entity
     {
@@ -8,6 +6,6 @@ namespace Domain.Entities
         {
             Name = name;
         }
-        public string Name { get; private set; }        
+        public string Name { get; private set; }
     }
 }
