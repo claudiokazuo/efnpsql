@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/documenttype")]
+    [Route("api/documenttypes")]
     [ApiController]
     public class DocumentTypeController : ControllerBase
     {

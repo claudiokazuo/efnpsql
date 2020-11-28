@@ -1,12 +1,15 @@
 ﻿using Application.Commands.Person;
 using Domain.Entities;
 using Domain.Handlers;
+using Domain.Pagination.Queries;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
-    [Route("api/person")]
+    [Route("api/persons")]
     [ApiController]
     public class PersonController : ControllerBase
     {
@@ -45,6 +48,15 @@ namespace Api.Controllers
         public IActionResult Put([FromBody] PersonUpdateCommand command)
         {
             return Ok(_handlerUpdate.Handle(command));
+        }
+        
+        [Route("pages")]
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery]GenericParameters parameters)
+        {
+            var result = await _repository.GetAllAsync(parameters);            
+            Response.Headers.Add("pagination", JsonConvert.SerializeObject(result.Pagination));
+            return Ok(result.Items);
         }
     }
 }

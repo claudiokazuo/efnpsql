@@ -1,10 +1,14 @@
 ﻿using Domain.Entities;
+using Domain.Pagination.PagedLists;
+using Domain.Pagination.Queries;
 using Domain.Queries;
 using Domain.Repositories;
 using Infrastructure.Contexts;
+using Infrastructure.Pagination.PagedLists;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -17,6 +21,7 @@ namespace Infrastructure.Repositories
         {
             _context = context;
             _entities = _context.Set<T>();
+            _query = _entities;
         }
 
         public void Add(T entity)
@@ -25,9 +30,17 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return _entities.AsEnumerable();
+            return _query.AsEnumerable();
+        }
+
+        public async Task<IPagedList<T>> GetAllAsync(GenericParameters parameters)
+        {
+            return await GenericPagedList<T>.ToPagedList(
+                _query, 
+                parameters.PageNumber, 
+                parameters.PageSize);
         }
 
         public void Remove(T entity)
