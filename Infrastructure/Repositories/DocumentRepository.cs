@@ -11,20 +11,17 @@ namespace Infrastructure.Repositories
     {
         public DocumentRepository(GenericContext context) : base(context)
         {
+            _query = _entities.Include(p => p.DocumentType);
         }
 
         public override IEnumerable<T> GetAll()
         {
-            return _entities
-                .Include(p => p.DocumentType)
-                .AsEnumerable<T>();
+            return _query.AsEnumerable<T>();
         }
 
         public override T SearchById(long id)
         {
-            return _entities
-                .Include(p => p.DocumentType)
-                .SingleOrDefault<T>(EntityQuery<T>.GetById(id));
+            return _query.SingleOrDefault<T>(EntityQuery<T>.GetById(id));
         }
     }
 }

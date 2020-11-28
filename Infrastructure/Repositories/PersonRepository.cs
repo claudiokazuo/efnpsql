@@ -11,21 +11,19 @@ namespace Infrastructure.Repositories
     {
         public PersonRepository(GenericContext context) : base(context)
         {
+            _query = _entities
+                .Include(p => p.Documents)
+                .ThenInclude(p => p.DocumentType);
         }
 
         public override IEnumerable<T> GetAll()
         {
-            return _entities
-                .Include(p => p.Documents)
-                .ThenInclude(p => p.DocumentType)
-                .AsEnumerable<T>();
+            return _query.AsEnumerable<T>();
         }
 
         public override T SearchById(long id)
         {
-            return _entities
-                .Include(p => p.Documents)
-                .ThenInclude(p => p.DocumentType)
+            return _query                
                 .Where(EntityQuery<T>.GetById(id))
                 .SingleOrDefault<T>();
         }

@@ -12,6 +12,7 @@ namespace Infrastructure.Repositories
     {
         protected GenericContext _context;
         protected DbSet<T> _entities;
+        protected IQueryable<T> _query;
         public GenericRepository(GenericContext context)
         {
             _context = context;
