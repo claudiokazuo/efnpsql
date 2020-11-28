@@ -1,4 +1,5 @@
 using Api.Configurations;
+using Api.Filters;
 using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +21,7 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options => options.Filters.Add(typeof(ErrorResponseFilter)));
             services.AddHealthChecks();
             services.AddSwaggerConfig();
             services.AddCorsConfig();
