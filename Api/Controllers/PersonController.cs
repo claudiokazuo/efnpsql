@@ -1,10 +1,8 @@
 ﻿using Application.Commands.Person;
-using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Api.Controllers
 {
@@ -26,27 +24,27 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public IActionResult Get()
         {
-            return _repository.GetAll();
+            return Ok(_repository.GetAll());
         }
 
         [HttpGet("{id}")]
-        public Person Get(long id)
+        public IActionResult Get(long id)
         {
-            return _repository.SearchById(id);
+            return Ok(_repository.SearchById(id));
         }
 
         [HttpPost]
-        public ICommandResponse Post([FromBody] PersonCreateCommand command)
+        public IActionResult Post([FromBody] PersonCreateCommand command)
         {
-            return _handlerCreate.Handle(command);
+            return Ok(_handlerCreate.Handle(command));
         }
 
         [HttpPut]
-        public ICommandResponse Put([FromBody] PersonUpdateCommand command)
+        public IActionResult Put([FromBody] PersonUpdateCommand command)
         {
-            return _handlerUpdate.Handle(command);
+            return Ok(_handlerUpdate.Handle(command));
         }
     }
 }

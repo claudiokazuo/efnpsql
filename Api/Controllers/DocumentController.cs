@@ -1,10 +1,8 @@
 ﻿using Application.Commands.Documment;
-using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Api.Controllers
 {
@@ -22,21 +20,21 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Document> Get()
+        public IActionResult Get()
         {
-            return _repository.GetAll();
+            return Ok(_repository.GetAll());
         }
 
         [HttpGet("{id}")]
-        public Document Get(long id)
+        public IActionResult Get(long id)
         {
-            return _repository.SearchById(id);
+            return Ok(_repository.SearchById(id));
         }
 
         [HttpPost]
-        public ICommandResponse Post([FromBody] DocumentCreateCommand command)
+        public IActionResult Post([FromBody] DocumentCreateCommand command)
         {
-            return _handler.Handle(command);
+            return Ok(_handler.Handle(command));
         }
     }
 }
