@@ -11,6 +11,6 @@ namespace Infrastructure.Repositories
             _query = _entities
                 .Include(p => p.Documents)
                 .ThenInclude(p => p.DocumentType);
-        }       
+        }
     }
 }

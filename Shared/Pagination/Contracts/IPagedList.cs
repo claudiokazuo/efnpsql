@@ -1,11 +1,12 @@
-﻿using Domain.Entities;
+﻿using Shared.Entities;
+using Shared.Pagination.Models;
 using System.Collections.Generic;
 
-namespace Domain.Pagination.PagedLists
+namespace Shared.Pagination.Contracts
 {
     public interface IPagedList<T> where T : Entity
     {
         IEnumerable<T> Items { get; }
-        Metadata Pagination { get; }
+        MetaData Pagination { get; }
     }
 }

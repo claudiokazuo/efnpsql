@@ -1,8 +1,9 @@
-﻿using Domain.Entities;
-using Domain.Pagination.PagedLists;
-using Domain.Pagination.Queries;
+﻿using Shared.Entities;
+using Shared.Pagination.Contracts;
+using Shared.Pagination.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 
 namespace Domain.Repositories
 {
@@ -13,6 +14,6 @@ namespace Domain.Repositories
         T SearchById(long id);
         void Add(T entity);
         void Update(T entity);
-        void Remove(T entity);        
+        void Remove(T entity);
     }
 }

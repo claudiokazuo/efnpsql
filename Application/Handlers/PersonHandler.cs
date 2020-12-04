@@ -1,9 +1,9 @@
 ﻿using Application.Commands.Person;
 using Application.Commands.Response;
-using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
+using Shared.Commands;
 
 namespace Application.Handlers
 {
@@ -17,7 +17,7 @@ namespace Application.Handlers
             _repository = repository;
         }
 
-        public ICommandResponse Handle(PersonCreateCommand command)
+        public IResponseCommand Handle(PersonCreateCommand command)
         {
             Person entity = new Person(command.Name, command.Email);
 
@@ -28,7 +28,7 @@ namespace Application.Handlers
                 entity.Id);
         }
 
-        public ICommandResponse Handle(PersonUpdateCommand command)
+        public IResponseCommand Handle(PersonUpdateCommand command)
         {
             Person entity = _repository.SearchById(command.Id);
             entity.SetIsActive(command.Active);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Entities
+namespace Shared.Entities
 {
     public abstract class Entity
     {

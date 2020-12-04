@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Domain.Pagination.PagedLists
+namespace Shared.Pagination.Models
 {
-    public class Metadata
+    public class MetaData
     {
         public int CurrentPage { get; private set; }
         public int TotalPages { get; private set; }
@@ -12,8 +12,8 @@ namespace Domain.Pagination.PagedLists
         public bool HasPrevious { get; private set; }
         public bool HasNext { get; private set; }
 
-        public Metadata(int currentPage, int pageSize, int totalCount)
-        {            
+        public MetaData(int currentPage, int pageSize, int totalCount)
+        {
             TotalCount = totalCount;
             PageSize = pageSize;
             CurrentPage = currentPage;

@@ -1,16 +1,16 @@
-﻿using Domain.Entities;
-using Domain.Pagination.PagedLists;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.Entities;
+using Shared.Pagination.Contracts;
+using Shared.Pagination.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Pagination.PagedLists
 {
-    public class GenericPagedList<T> :IPagedList<T> where T : Entity
-    {        
-        public Metadata Pagination { get; set; }
+    public class GenericPagedList<T> : IPagedList<T> where T : Entity
+    {
+        public MetaData Pagination { get; set; }
         public IEnumerable<T> Items { get; }
 
         private GenericPagedList(
@@ -19,7 +19,7 @@ namespace Infrastructure.Pagination.PagedLists
             int pageNumber,
             int pageSize)
         {
-            Pagination = new Metadata(pageNumber, pageSize, totalCount);
+            Pagination = new MetaData(pageNumber, pageSize, totalCount);
             Items = items;
         }
 

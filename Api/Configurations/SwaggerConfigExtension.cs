@@ -8,7 +8,8 @@ namespace Api.Configurations
     {
         public static void AddSwaggerConfig(this IServiceCollection services)
         {
-            services.AddSwaggerGen(c => {
+            services.AddSwaggerGen(c =>
+            {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Person Register",

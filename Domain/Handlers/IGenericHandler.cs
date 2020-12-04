@@ -1,9 +1,10 @@
-﻿using Domain.Commands;
+﻿
+using Shared.Commands;
 
 namespace Domain.Handlers
 {
-    public interface IGenericHandler<T> where T : ICommandInput
+    public interface IGenericHandler<T> where T : IInputCommand
     {
-        ICommandResponse Handle(T command);
+        IResponseCommand Handle(T command);
     }
 }

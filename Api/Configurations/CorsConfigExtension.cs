@@ -6,7 +6,7 @@ namespace Api.Configurations
     public static class CorsConfigExtension
     {
         private static readonly string _policyName = "PolicyAllowAll";
-        
+
         public static void AddCorsConfig(this IServiceCollection services)
         {
             services.AddCors(

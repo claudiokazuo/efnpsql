@@ -40,7 +40,7 @@ namespace Api
 
             app.UseSwaggerConfig();
             app.UseCorsConfig();
-      
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

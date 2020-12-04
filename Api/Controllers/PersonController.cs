@@ -1,10 +1,9 @@
 ﻿using Application.Commands.Person;
 using Domain.Entities;
 using Domain.Handlers;
-using Domain.Pagination.Queries;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Shared.Pagination.Models;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
@@ -49,12 +48,12 @@ namespace Api.Controllers
         {
             return Ok(_handlerUpdate.Handle(command));
         }
-        
+
         [Route("pages")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery]GenericParameters parameters)
         {
-            var result = await _repository.GetAllAsync(parameters);            
+            var result = await _repository.GetAllAsync(parameters);
             Response.Headers.Add("pagination", result.Pagination.ToString());
             return Ok(result.Items);
         }

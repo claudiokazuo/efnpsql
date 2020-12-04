@@ -1,8 +1,8 @@
-﻿using Domain.Commands;
+﻿using Shared.Commands;
 
 namespace Application.Commands.Response
 {
-    public class GenericResponseCommand : ICommandResponse
+    public class GenericResponseCommand : IResponseCommand
     {
         public GenericResponseCommand(bool success, string message, object data)
         {

@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Shared.Entities;
+
+namespace Domain.Entities
 {
     public class Document : Entity
     {

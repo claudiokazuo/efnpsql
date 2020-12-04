@@ -1,9 +1,9 @@
 ﻿using Application.Commands.Documment;
 using Application.Commands.Response;
-using Domain.Commands;
 using Domain.Entities;
 using Domain.Handlers;
 using Domain.Repositories;
+using Shared.Commands;
 
 namespace Application.Handlers
 {
@@ -16,7 +16,7 @@ namespace Application.Handlers
             _repository = repository;
         }
 
-        public ICommandResponse Handle(DocumentCreateCommand command)
+        public IResponseCommand Handle(DocumentCreateCommand command)
         {
             Document entity = new Document(
                 command.Number,

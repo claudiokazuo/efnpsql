@@ -1,8 +1,8 @@
-﻿using Domain.Commands;
+﻿using Shared.Commands;
 
 namespace Application.Commands.Documment
 {
-    public class DocumentCreateCommand : ICommandInput
+    public class DocumentCreateCommand : IInputCommand
     {
         public string Number { get; set; }
         public long PersonId { get; set; }

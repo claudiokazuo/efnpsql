@@ -1,11 +1,11 @@
-﻿using Domain.Entities;
-using Domain.Pagination.PagedLists;
-using Domain.Pagination.Queries;
-using Domain.Queries;
+﻿using Domain.Queries;
 using Domain.Repositories;
 using Infrastructure.Contexts;
 using Infrastructure.Pagination.PagedLists;
 using Microsoft.EntityFrameworkCore;
+using Shared.Entities;
+using Shared.Pagination.Contracts;
+using Shared.Pagination.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,8 +38,8 @@ namespace Infrastructure.Repositories
         public async Task<IPagedList<T>> GetAllAsync(GenericParameters parameters)
         {
             return await GenericPagedList<T>.ToPagedList(
-                _query, 
-                parameters.PageNumber, 
+                _query,
+                parameters.PageNumber,
                 parameters.PageSize);
         }
 
