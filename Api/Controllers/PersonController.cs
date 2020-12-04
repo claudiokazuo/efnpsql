@@ -55,7 +55,7 @@ namespace Api.Controllers
         public async Task<IActionResult> Get([FromQuery]GenericParameters parameters)
         {
             var result = await _repository.GetAllAsync(parameters);            
-            Response.Headers.Add("pagination", JsonConvert.SerializeObject(result.Pagination));
+            Response.Headers.Add("pagination", result.Pagination.ToString());
             return Ok(result.Items);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Domain.Pagination.PagedLists
 {
@@ -19,6 +20,11 @@ namespace Domain.Pagination.PagedLists
             TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
             HasPrevious = currentPage > 1;
             HasNext = currentPage < TotalPages;
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }
