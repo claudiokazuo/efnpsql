@@ -23,6 +23,7 @@ namespace Api
         {
             services.AddMvc(options => options.Filters.Add(typeof(ErrorResponseFilter)));
             services.AddHealthChecks();
+            services.AddCompressionConfig();            
             services.AddSwaggerConfig();
             services.AddCorsConfig();
             services.AddDbContext<GenericContext>();
@@ -38,13 +39,12 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHealthChecks(_healthPath);
+            app.UseCompressionConfig();            
             app.UseSwaggerConfig();
             app.UseCorsConfig();
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -52,7 +52,7 @@ namespace Api
                 endpoints.MapControllers();
             });
 
-            app.UseHealthChecks(_healthPath);
+            
         }
     }
 }
