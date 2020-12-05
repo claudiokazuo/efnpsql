@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
-using Domain.Repositories;
 using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Repositories;
 
 namespace Api.Configurations
 {

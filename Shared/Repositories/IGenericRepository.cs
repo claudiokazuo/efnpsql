@@ -4,8 +4,7 @@ using Shared.Pagination.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-
-namespace Domain.Repositories
+namespace Shared.Repositories
 {
     public interface IGenericRepository<T> where T : Entity
     {

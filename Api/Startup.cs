@@ -23,7 +23,7 @@ namespace Api
         {
             services.AddMvc(options => options.Filters.Add(typeof(ErrorResponseFilter)));
             services.AddHealthChecks();
-            services.AddCompressionConfig();            
+            services.AddCompressionConfig();
             services.AddSwaggerConfig();
             services.AddCorsConfig();
             services.AddDbContext<GenericContext>();
@@ -40,7 +40,7 @@ namespace Api
             }
 
             app.UseHealthChecks(_healthPath);
-            app.UseCompressionConfig();            
+            app.UseCompressionConfig();
             app.UseSwaggerConfig();
             app.UseCorsConfig();
             app.UseHttpsRedirection();
@@ -52,7 +52,7 @@ namespace Api
                 endpoints.MapControllers();
             });
 
-            
+
         }
     }
 }

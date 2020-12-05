@@ -1,7 +1,6 @@
-﻿
-using Shared.Commands;
+﻿using Shared.Commands;
 
-namespace Domain.Handlers
+namespace Shared.Handlers
 {
     public interface IGenericHandler<T> where T : IInputCommand
     {

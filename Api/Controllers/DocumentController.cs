@@ -1,8 +1,8 @@
 ﻿using Application.Commands.Documment;
 using Domain.Entities;
-using Domain.Handlers;
-using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Handlers;
+using Shared.Repositories;
 
 namespace Api.Controllers
 {

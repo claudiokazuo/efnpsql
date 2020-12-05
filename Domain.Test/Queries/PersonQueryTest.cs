@@ -32,7 +32,7 @@ namespace Domain.Test.Queries
         public void CanFindById()
         {
             int idExpected = 2;
-            Person person = _persons.AsQueryable().Where(EntityQuery<Person>.GetById(idExpected)).SingleOrDefault();
+            Person person = _persons.AsQueryable().Where(GenericEntityQuery<Person>.GetById(idExpected)).SingleOrDefault();
             Assert.Equal(idExpected, person.Id);
         }
 
@@ -40,7 +40,7 @@ namespace Domain.Test.Queries
         public void CanFindByCreatedOn()
         {
             int countExpected = 3;
-            int countActual = _persons.AsQueryable().Where(EntityQuery<Person>.GetByCreatedOn(DateTime.Now)).Count();
+            int countActual = _persons.AsQueryable().Where(GenericEntityQuery<Person>.GetByCreatedOn(DateTime.Now)).Count();
             Assert.Equal(countExpected, countActual);
         }
 
@@ -49,7 +49,7 @@ namespace Domain.Test.Queries
         {
             int countExpected = 1;
             DateTime updateOn = DateTime.Now.AddDays(2);
-            int countActual = _persons.AsQueryable<Person>().Where(EntityQuery<Person>.GetByUpdateOn(updateOn)).Count();
+            int countActual = _persons.AsQueryable<Person>().Where(GenericEntityQuery<Person>.GetByUpdateOn(updateOn)).Count();
             Assert.Equal(countExpected, countActual);
         }
 
@@ -57,7 +57,7 @@ namespace Domain.Test.Queries
         public void CanFindInactivePersons()
         {
             int countExpected = 2;
-            int countActual = _persons.AsQueryable().Where(EntityQuery<Person>.GetByIsActive(false)).Count();
+            int countActual = _persons.AsQueryable().Where(GenericEntityQuery<Person>.GetByIsActive(false)).Count();
             Assert.Equal(countExpected, countActual);
         }
 
@@ -65,7 +65,7 @@ namespace Domain.Test.Queries
         public void CanFindActivePersons()
         {
             int countExpected = 1;
-            int countActual = _persons.AsQueryable().Where(EntityQuery<Person>.GetByIsActive(true)).Count();
+            int countActual = _persons.AsQueryable().Where(GenericEntityQuery<Person>.GetByIsActive(true)).Count();
             Assert.Equal(countExpected, countActual);
         }
     }

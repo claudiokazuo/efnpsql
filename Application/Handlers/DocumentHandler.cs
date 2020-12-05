@@ -1,9 +1,9 @@
 ﻿using Application.Commands.Documment;
 using Application.Commands.Response;
 using Domain.Entities;
-using Domain.Handlers;
-using Domain.Repositories;
 using Shared.Commands;
+using Shared.Handlers;
+using Shared.Repositories;
 
 namespace Application.Handlers
 {

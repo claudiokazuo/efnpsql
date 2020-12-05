@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Domain.Queries
 {
-    public static class EntityQuery<T> where T : Entity
+    public static class GenericEntityQuery<T> where T : Entity
     {
         public static Expression<Func<T, bool>> GetById(long id)
         {

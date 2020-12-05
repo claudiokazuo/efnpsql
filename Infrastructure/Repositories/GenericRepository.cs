@@ -1,11 +1,11 @@
 ﻿using Domain.Queries;
-using Domain.Repositories;
 using Infrastructure.Contexts;
 using Infrastructure.Pagination.PagedLists;
 using Microsoft.EntityFrameworkCore;
 using Shared.Entities;
 using Shared.Pagination.Contracts;
 using Shared.Pagination.Models;
+using Shared.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories
         public virtual T SearchById(long id)
         {
             return _entities
-                .Where(EntityQuery<T>.GetById(id))
+                .Where(GenericEntityQuery<T>.GetById(id))
                 .SingleOrDefault();
         }
 

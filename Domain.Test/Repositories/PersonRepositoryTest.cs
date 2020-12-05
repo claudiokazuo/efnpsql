@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Queries;
-using Domain.Repositories;
 using Moq;
+using Shared.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace Domain.Test.Repositories
                 .Setup(repository => repository.SearchById(It.IsAny<long>()))
                 .Returns((long id) =>
                     persons.AsQueryable()
-                           .Where(EntityQuery<Person>.GetById(id))
+                           .Where(GenericEntityQuery<Person>.GetById(id))
                            .SingleOrDefault());
 
 
@@ -56,7 +56,7 @@ namespace Domain.Test.Repositories
                     person =>
                     {
                         Person result = persons.AsQueryable()
-                                               .Where(EntityQuery<Person>.GetById(person.Id))
+                                               .Where(GenericEntityQuery<Person>.GetById(person.Id))
                                                .SingleOrDefault();
                         persons.Remove(result);
                     });
@@ -67,7 +67,7 @@ namespace Domain.Test.Repositories
                     person =>
                     {
                         Person result = persons.AsQueryable()
-                                               .Where(EntityQuery<Person>.GetById(person.Id))
+                                               .Where(GenericEntityQuery<Person>.GetById(person.Id))
                                                .SingleOrDefault();
 
                         result.SetIsActive(person.IsActive);

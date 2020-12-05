@@ -2,8 +2,8 @@
 using Application.Commands.Documment;
 using Application.Commands.Person;
 using Application.Handlers;
-using Domain.Handlers;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Handlers;
 
 namespace Api.Configurations
 {
