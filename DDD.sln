@@ -20,6 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{6F4599
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{81E55780-6830-4F86-912E-4237FA3D84CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tables", "Tables", "{09004BDF-E280-4784-A479-F8B6C589C321}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\Tables\Create.sql = Scripts\Tables\Create.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +60,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09004BDF-E280-4784-A479-F8B6C589C321} = {81E55780-6830-4F86-912E-4237FA3D84CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F39A8758-6CDE-47A8-B105-5823BD4964AD}
