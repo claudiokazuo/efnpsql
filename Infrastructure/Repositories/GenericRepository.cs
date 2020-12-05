@@ -6,8 +6,10 @@ using Shared.Entities;
 using Shared.Pagination.Contracts;
 using Shared.Pagination.Models;
 using Shared.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
@@ -54,6 +56,16 @@ namespace Infrastructure.Repositories
             return _entities
                 .Where(GenericEntityQuery<T>.GetById(id))
                 .SingleOrDefault();
+        }
+
+        public IEnumerable<T> SearchEntities(Expression<Func<T, bool>> expression)
+        {
+            return _query.Where(expression);
+        }
+
+        public T SearchEntity(Expression<Func<T, bool>> expression)
+        {
+            return _query.Where(expression).SingleOrDefault();
         }
 
         public void Update(T entity)
