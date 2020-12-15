@@ -46,6 +46,7 @@ namespace Api
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseMiddlewareConfig();
 
             app.UseEndpoints(endpoints =>
             {
