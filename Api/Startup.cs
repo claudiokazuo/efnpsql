@@ -1,11 +1,13 @@
 using Api.Configurations;
 using Api.Filters;
+using AutoMapper;
 using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Api
 {
@@ -29,6 +31,8 @@ namespace Api
             services.AddDbContext<GenericContext>();
             services.AddRepositoryConfig();
             services.AddHandlerConfig();
+            services.AddRedisConfig(Configuration.GetConnectionString("RedisConfiguration"));
+            services.AddAutoMapperConfig();
             services.AddControllers();
         }
 
